@@ -1,0 +1,9 @@
+<h1>The fox you are viewing is <%= @fox.name %></h1>
+<p>
+<%= @fox.name %> is a <%= @fox.color %> fox.
+<% if @fox.den %>
+  <%= @fox.name %> belongs to the <%= @fox.den.name %> den.
+<% else %>
+  <%= @fox.name %> is a lone fox!
+<% end %>
+</p>
