@@ -1,3 +1,3 @@
 class Fox < ActiveRecord::Base
-  # Remember to create a migration!
+  belongs_to :den
 end
