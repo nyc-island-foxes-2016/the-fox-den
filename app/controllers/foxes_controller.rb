@@ -23,6 +23,7 @@ post '/foxes' do
 end
 
 get '/foxes/:id/edit' do
+  @dens = Den.all
   @fox = Fox.find(params[:id])
   erb :'foxes/edit'
 end
