@@ -1,3 +1,10 @@
 <% @foxes.each do |fox| %>
-<h3><a href="/foxes/<%= fox.id %>"><%= fox.name %></a> (a <%= fox.color %> fox)</h3>
+  <h3><%= fox.name %></h3>
+  <p><%= fox.name %> is a <%= fox.color %> fox.
+    <ul>
+      <li><a href="/foxes/<%= fox.id %>">View</a></li>
+      <li><a href="/foxes/<%= fox.id %>/edit">Edit</a></li>
+    </ul>
+  </p>
+  <a href="/foxes/<%= fox.id %>/edit">Edit</a>
 <% end %>

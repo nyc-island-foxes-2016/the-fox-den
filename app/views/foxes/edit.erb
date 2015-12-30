@@ -1,0 +1,8 @@
+<form action="/foxes/<%= @fox.id %>" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <label for="fox-name">Updated name for this fox:</label>
+  <input type="text" name="fox[name]" id="fox-name" value="<%= @fox.name %>">
+  <label for="fox-color">Updated color for this fox:</label>
+  <input type="text" name="fox[color]" id="fox-color" value="<%= @fox.color %>">
+  <input type="submit" value="Update!">
+</form>

@@ -21,3 +21,7 @@ post '/foxes' do
   redirect "/foxes/#{fox.id}"
 end
 
+get '/foxes/:id/edit' do
+  @fox = Fox.find(params[:id])
+  erb :'foxes/edit'
+end
