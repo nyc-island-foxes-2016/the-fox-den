@@ -4,6 +4,12 @@
     <ul>
       <li><a href="/foxes/<%= fox.id %>">View</a></li>
       <li><a href="/foxes/<%= fox.id %>/edit">Edit</a></li>
+      <li>
+      <form action="/foxes/<%= fox.id %>" method="POST">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="submit" value="DELETE!">
+      </form>
+    </li>
     </ul>
   </p>
 <% end %>

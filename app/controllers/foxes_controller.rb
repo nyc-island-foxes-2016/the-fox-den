@@ -31,3 +31,9 @@ put '/foxes/:id' do
   fox.update(params[:fox])
   redirect "/foxes/#{fox.id}"
 end
+
+delete '/foxes/:id' do
+  fox = Fox.find(params[:id])
+  fox.destroy
+  redirect '/foxes'
+end
