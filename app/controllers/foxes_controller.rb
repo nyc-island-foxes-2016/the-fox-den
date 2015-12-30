@@ -3,7 +3,7 @@ get '/' do
 end
 
 get '/foxes' do
-  @foxes = Fox.all
+  @foxes = Fox.order(:created_at)
   erb :'foxes/index'
 end
 
@@ -21,3 +21,19 @@ post '/foxes' do
   redirect "/foxes/#{fox.id}"
 end
 
+get '/foxes/:id/edit' do
+  @fox = Fox.find(params[:id])
+  erb :'foxes/edit'
+end
+
+put '/foxes/:id' do
+  fox = Fox.find(params[:id])
+  fox.update(params[:fox])
+  redirect "/foxes/#{fox.id}"
+end
+
+delete '/foxes/:id' do
+  fox = Fox.find(params[:id])
+  fox.destroy
+  redirect '/foxes'
+end
