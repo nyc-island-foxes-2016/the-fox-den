@@ -3,7 +3,7 @@ get '/' do
 end
 
 get '/foxes' do
-  @foxes = Fox.all
+  @foxes = Fox.order(:created_at)
   erb :'foxes/index'
 end
 
