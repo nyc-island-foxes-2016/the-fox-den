@@ -3,5 +3,14 @@
   <input type="text" name="fox[name]" id="fox-name">
   <label for="fox-color">Color of the new fox:</label>
   <input type="text" name="fox[color]" id="fox-color">
+  <select name="fox[den_id]">
+    <% @dens.each do |den|  %>
+      <% if @fox && @fox.den == den %>
+        <option selected="selected" value="<%= den.id %>"><%= den.name %></option>
+      <% else %>
+        <option value="<%= den.id %>"><%= den.name %></option>
+      <% end %>
+    <% end %>
+  </select>
   <input type="submit" value="Submit!">
 </form>

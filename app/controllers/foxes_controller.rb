@@ -8,6 +8,7 @@ get '/foxes' do
 end
 
 get '/foxes/new' do
+  @dens = Den.all
   erb :'foxes/new'
 end
 
