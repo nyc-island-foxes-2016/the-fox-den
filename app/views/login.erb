@@ -1,0 +1,15 @@
+<h1>Please login with your fox name and password:</h1>
+<form action="/login" method="POST">
+  <label for="fox-name">Name of the new fox:</label>
+  <input type="text" name="fox[name]" id="fox-name" value="<%= @fox.name %>">
+  <label for="fox-password">Password for the new fox:</label>
+  <input type="password" name="fox[password]" id="fox-password">
+  <input type="submit" value="Login">
+</form>
+<% if @errors %>
+  <ul>
+    <% @errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end  %>
