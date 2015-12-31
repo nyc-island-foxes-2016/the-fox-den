@@ -1,8 +1,8 @@
 <form action="/foxes" method="POST">
   <label for="fox-name">Name of the new fox:</label>
-  <input type="text" name="fox[name]" id="fox-name">
+  <input type="text" name="fox[name]" id="fox-name" value="<%= @fox.name %>">
   <label for="fox-color">Color of the new fox:</label>
-  <input type="text" name="fox[color]" id="fox-color">
+  <input type="text" name="fox[color]" id="fox-color" value="<%= @fox.color %>">
   <select name="fox[den_id]">
     <% @dens.each do |den|  %>
       <% if @fox && @fox.den == den %>
@@ -14,3 +14,10 @@
   </select>
   <input type="submit" value="Submit!">
 </form>
+<% if @errors %>
+  <ul>
+    <% @errors.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end  %>

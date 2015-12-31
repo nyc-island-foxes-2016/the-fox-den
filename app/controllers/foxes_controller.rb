@@ -8,6 +8,7 @@ get '/foxes' do
 end
 
 get '/foxes/new' do
+  @fox = Fox.new
   @dens = Den.all
   erb :'foxes/new'
 end
@@ -18,8 +19,14 @@ get '/foxes/:id' do
 end
 
 post '/foxes' do
-  fox = Fox.create(params[:fox])
-  redirect "/foxes/#{fox.id}"
+  @dens = Den.all
+  @fox = Fox.new(params[:fox])
+  if @fox.save
+    redirect "/foxes/#{@fox.id}"
+  else
+    @errors = @fox.errors.full_messages
+    erb :'foxes/new'
+  end
 end
 
 get '/foxes/:id/edit' do
