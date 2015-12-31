@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -18,6 +18,21 @@
   <title></title>
 </head>
 <body>
+  <div>
+    <% if logged_in? %>
+    <p>Welcome to the Fox Den, <%= current_fox.name %>.</p>
+    <ul>
+      <li><a href="/foxes/<%= current_fox.id %>">Your fox profile</a></li>
+      <li><a href="/logout">Logout</a></li>
+    </ul>
+    <% else %>
+    <p>Welcome to the Fox Den, stranger, please sign up or login below.</p>
+      <ul>
+        <li> <a href="/foxes/new">Create a new fox / sign up</a></li>
+        <li><a href="/login">Login</a> </li>
+      </ul>
+    <% end %>
+  </div>
   <%= yield %>
 </body>
 </html>
