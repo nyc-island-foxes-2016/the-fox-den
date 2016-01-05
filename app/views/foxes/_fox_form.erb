@@ -1,0 +1,18 @@
+<form action="/foxes" method="POST">
+  <label for="fox-name">Name of the new fox:</label>
+  <input type="text" name="fox[name]" id="fox-name" value="<%= @fox.name %>">
+  <label for="fox-password">Password for the new fox:</label>
+  <input type="password" name="fox[password]" id="fox-password">
+  <label for="fox-color">Color of the new fox:</label>
+  <input type="text" name="fox[color]" id="fox-color" value="<%= @fox.color %>">
+  <select name="fox[den_id]">
+    <% @dens.each do |den|  %>
+      <% if @fox && @fox.den == den %>
+        <option selected="selected" value="<%= den.id %>"><%= den.name %></option>
+      <% else %>
+        <option value="<%= den.id %>"><%= den.name %></option>
+      <% end %>
+    <% end %>
+  </select>
+  <input type="submit" value="Submit!">
+</form>
