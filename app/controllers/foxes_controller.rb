@@ -3,6 +3,8 @@ get '/' do
 end
 
 get '/foxes' do
+  @fox = Fox.new
+  @dens = Den.all
   @foxes = Fox.order(:created_at)
   erb :'foxes/index'
 end
@@ -19,13 +21,18 @@ get '/foxes/:id' do
 end
 
 post '/foxes' do
-  @dens = Den.all
-  @fox = Fox.new(params[:fox])
-  if @fox.save
-    redirect "/foxes/#{@fox.id}"
+  if request.xhr? # XMLHTTPRequest (the long form name of "AJAX")
+    @fox = Fox.create(params[:fox])
+    erb :'/foxes/_home_fox_show', locals: {fox: @fox}, layout: false
   else
-    @errors = @fox.errors.full_messages
-    erb :'foxes/new'
+    @dens = Den.all
+    @fox = Fox.new(params[:fox])
+    if @fox.save
+      redirect "/foxes/#{@fox.id}"
+    else
+      @errors = @fox.errors.full_messages
+      erb :'foxes/new'
+    end
   end
 end
 

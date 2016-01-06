@@ -1,15 +1,6 @@
+<div id="main-page-fox-form-container">
+  <%= erb :'/foxes/_fox_form' %>
+</div>
 <% @foxes.each do |fox| %>
-  <h3><%= fox.name %></h3>
-  <p><%= fox.name %> is a <%= fox.color %> fox.
-    <ul>
-      <li><a href="/foxes/<%= fox.id %>">View</a></li>
-      <li><a href="/foxes/<%= fox.id %>/edit">Edit</a></li>
-      <li>
-      <form action="/foxes/<%= fox.id %>" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="submit" value="DELETE!">
-      </form>
-    </li>
-    </ul>
-  </p>
+  <%= erb :'/foxes/_home_fox_show', locals: {fox: fox} %>
 <% end %>
