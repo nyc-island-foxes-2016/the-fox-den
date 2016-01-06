@@ -23,7 +23,8 @@ end
 post '/foxes' do
   if request.xhr? # XMLHTTPRequest (the long form name of "AJAX")
     @fox = Fox.create(params[:fox])
-    erb :'/foxes/_home_fox_show', locals: {fox: @fox}, layout: false
+    # erb :'/foxes/_home_fox_show', locals: {fox: @fox}, layout: false
+    return {id: @fox.id, name: @fox.name, color: @fox.color}.to_json
   else
     @dens = Den.all
     @fox = Fox.new(params[:fox])
