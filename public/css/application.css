@@ -1,3 +1,8 @@
 #main-page-fox-form-container {
   display: none;
 }
+
+
+.ajax-menu{
+  list-style: none;
+}

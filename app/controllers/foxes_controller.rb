@@ -9,6 +9,11 @@ get '/foxes' do
   erb :'foxes/index'
 end
 
+get '/foxes.json' do 
+  @foxes = Fox.all
+  @foxes.to_json
+end
+
 get '/foxes/new' do
   @fox = Fox.new
   @dens = Den.all
@@ -23,6 +28,7 @@ end
 post '/foxes' do
   if request.xhr? # XMLHTTPRequest (the long form name of "AJAX")
     @fox = Fox.create(params[:fox])
+    redirect "/ajax/foxes/#{@fox.id}"
     # erb :'/foxes/_home_fox_show', locals: {fox: @fox}, layout: false
     return {id: @fox.id, name: @fox.name, color: @fox.color}.to_json
   else

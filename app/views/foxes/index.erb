@@ -1,6 +1,3 @@
-<div id="main-page-fox-form-container">
-  <%= erb :'/foxes/_fox_form' %>
-</div>
 <div id="fox-container">
   <% @foxes.each do |fox| %>
     <%= erb :'/foxes/_home_fox_show', locals: {fox: fox} %>

@@ -1,4 +1,36 @@
 $(document).on("ready", function() {
+  
+  $('#read').on('click',function(event){
+    event.preventDefault();
+    $.ajax('/ajax/foxes/all').done(function(response){
+      $('#ajax-fox-list').html(response);
+    }).fail(function(response){
+      alert('HEYYYYY THIS WAS BADDDDDDDD');
+    });
+  }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   $("#toggle-form-button").on("click", function() {
     $("#main-page-fox-form-container").toggle();
   });
