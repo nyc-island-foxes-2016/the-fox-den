@@ -1,5 +1,3 @@
-var foxes;
-
 var Fox = function(args){
   this.name = args.name;
   this.color = args.color;   
@@ -14,10 +12,3 @@ Fox.all = function(){
   });
 }
 
-Fox.prototype.add_cub = function(cub){
-  this.cubs.push( cub );
-}
-
-// Fox.all().then(function(allFoxes){
-//   foxes = allFoxes;
-// });
